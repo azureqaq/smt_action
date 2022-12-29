@@ -1,0 +1,23 @@
+# pycache
+__pycache__/
+
+# pyenv
+venv/
+.env/
+env/
+
+# MacOS
+.DS_Store
+.localized
+
+# local
+*_local.*
+
+# log
+log/
+*.log
+
+# temp file
+*_temp*
+
+status/

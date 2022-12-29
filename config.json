@@ -1,0 +1,16 @@
+{
+    "email": {
+        "user": "2*****@qq.com",
+        "sender": "******",
+        "pwd": "m******d",
+        "receivers": [
+            "******@qq.com"
+        ],
+        "port": 465,
+        "host": "smtp.qq.com"
+    },
+    "demotask": {
+        "arg1": 123,
+        "arg2": 456
+    }
+}

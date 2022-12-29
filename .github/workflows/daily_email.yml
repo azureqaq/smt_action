@@ -1,0 +1,33 @@
+name: daily_email
+# 每天 7.00 注意：githubaction使用的utc时间
+
+on:
+  schedule:               # 如果不想启用这个 Task 请注释掉这行和下一行
+    - cron: '0 23 * * *'  # 在这里填写定时器，cron的语法可见: https://crontab.futils.com/
+  workflow_dispatch:      # 是否允许手动执行，注释掉此行就不允许手动运行了
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    - name: cache log
+      id: cache-log
+      uses: actions/cache@v3
+      with:
+        path: log
+        key: bot-logs
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: "每日邮件"
+      # 在这里修改参数，可以指定多个task，比如：
+      # python main.py email_daily_task demotask
+      # 注意：请确保task已经注册，并且遵循命名规则：即 Task实例化时的参数以及储存它的变量名一样
+      run: |
+        python main.py email_daily_task
+      continue-on-error: false
