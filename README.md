@@ -1,4 +1,4 @@
-# my_timed_tasks
+# smt_action
 使用Github Action来定时运行python脚本
 
 ## 如何使用
